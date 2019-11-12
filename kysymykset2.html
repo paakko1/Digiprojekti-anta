@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Kysely</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="tyyli36.css" rel="stylesheet">
+        
+
+        
+        
+	</head>
+	<body>
+        
+        
+		<header>
+      <h1 align="center"> Kehityskysely </h1>  
+            
+		</header>
+
+         <div align="center">
+    Kyselyn tarkoituksena on kartoittaa paranettavia epäkohtia Haaga-Helian nettisivuston käyttöliittymässä. 
+</div>
+        
+        <br> </br> 
+    <br> </br> 
+         
+ <!-- lomakkeet -->
+
+         
+    <!-- 1. lomake -->
+    
+
+    <!-- 2. lomake -->
+        
+   <div align="center">
+    <form onsubmit="return false">
+    <fieldset>
+       <h3>
+Kuinka tyytyväinen olet tämän hetkiseen haaga-helian sivustoon?</h3>
+        
+        
+        
+    
+        <label>
+         <input type="radio" name="arvio" value="todella tyytyväinen"> Todella tyytyväinen 
+        </label>
+         <label>
+         <input type="radio" name="arvio" value="tyytyväinen"> Tyytyväinen
+        </label>
+         <label>
+         <input type="radio" name="arvio" value="menettelee"> Menettelee
+        </label>
+           <label>
+         <input type="radio" name="arvio" value="välttävä"> Välttävä
+        </label>
+         <label>
+         <input type="radio" name="arvio" value="tyytymätön"> Tyytymätön
+        </label>
+        
+        
+               <h3>
+Kuinka tyytyväinen olet tämän hetkiseen haaga-helian sivuston palveluiden navigointiin? </h3>
+        
+        
+        
+    
+        <label>
+         <input type="radio" name="navi" value="todella tyytyväinen"> Todella tyytyväinen 
+        </label>
+         <label>
+         <input type="radio" name="navi" value="tyytyväinen"> Tyytyväinen
+        </label>
+         <label>
+         <input type="radio" name="navi" value="menettelee"> Menettelee
+        </label>
+           <label>
+         <input type="radio" name="navi" value="välttävä"> Välttävä
+        </label>
+         <label>
+         <input type="radio" name="navi" value="tyytymätön"> Tyytymätön
+        </label>
+        
+         <h3>
+Löydätkö HH:n pääsivustolta kaiken tarvitsemasi?  </h3>
+        
+          <select id="loysin">
+          <option value="kyllä">Kyllä </option>
+          <option value="en">En</option>
+          <option value="puutteellisesti">Puutteellisesti</option>
+         
+        </select>
+        
+        
+        <br><br>
+        
+        
+    
+        
+        
+        <h3>Kuinka helppokäyttöiseksi koet HH:n sivut? </h3> 
+        
+        
+        <label>
+         <input type="radio" name="kaytto" value="Todella helppokäyttöiseksi"> Todella helppokäyttöiseksi
+        </label>
+         <label>
+         <input type="radio" name="kaytto" value="Osittain helppokäyttöiseksi"> Osittain helppokäyttöiseksi
+        </label>
+         <label>
+         <input type="radio" name="kaytto" value="Osittain hankalakäyttöiseksi"> Osittain hankalakäyttöiseksi
+        </label>
+         <label>
+         <input type="radio" name="kaytto" value="Hankalakäyttöiseksi">  Hankalakäyttöiseksi
+        </label>
+        
+        
+        <br></br>
+        
+        
+
+<h3>
+
+Haluaisitko etusivulle yhtenäisen portaalin, josta löytyy kaikki haaga-helian eri käyttöjärjestelmät? (Esim. Moodle, Mynet, Outlook) 
+        
+        </h3>
+        
+        <select id="portaali">
+          <option value="kyllä">Kyllä </option>
+          <option value="en">En</option>
+          
+            </select>
+        
+        <br></br>
+        
+        
+       <h3> Mitä haluaisit portaalista löytyvän lisäksi? (Esim. opiskelijajärjestöt, kalenteri) </h3>
+        
+      <textarea id="teksti" name="Text1" cols="40" rows="5"></textarea>
+        
+        
+      
+        <br><br>
+        <input type="submit" value="lähetä" onclick="palaute()">
+        <input type="reset" value="tyhjennä">
+        
+</fieldset>
+    </form>
+</div>
+
+
+
+   <script>
+    function varaus(){
+        var nimi = document.getElementById("nimi").value;
+        var sposti = document.getElementById("email").value;
+        // tähän vielä muiden lomake-elementtien tietojen lukeminen samalla lailla
+        // tulostetaan tiedot div-elementtii
+        document.getElementById("varaustiedot").innerHTML="Kiitos varauksesta "+nimi+"<br>Sähköpostisoitteesi: "+sposti;
+    }
+       
+     function palaute(){
+         var taulukko=[];
+         taulukko.push("Kiitos vastauksesta. ");
+         // radiobuttonit     
+        var radios = document.getElementsByName("arvio");
+         // checkboxit
+        
+         // radiot
+        for (var i=0, length = radios.length; i<length; i++){
+            if (radios[i].checked){
+                taulukko.push("Tyytyväisyytesi sivustoon:  "+radios[i].value+", ");
+                break;
+            }
+        }
+         
+       var radios = document.getElementsByName("navi");
+         // checkboxit
+        
+         // radiot
+        for (var i=0, length = radios.length; i<length; i++){
+            if (radios[i].checked){
+                taulukko.push("Tyytyväisyytesi navigointiin:  "+radios[i].value+", ");
+                break;
+            }
+        }
+       
+         // alasvetovalikko
+         var x = document.getElementById("loysin").selectedIndex;
+         var y = document.getElementById("loysin").options;
+         taulukko.push("Löysitkö tarvitsemasi?: " + y[x].text); 
+         
+             var kaytettavyys = document.getElementsByName("kaytto");
+         // radiot
+        for (var i=0, length = radios.length; i<length; i++){
+            if (radios[i].checked){
+                taulukko.push(" Arviosi käytettävyydestä:  "+kaytettavyys[i].value+", ");
+                break;
+            }
+        }
+         
+         
+          var x = document.getElementById("portaali").selectedIndex;
+         var y = document.getElementById("portaali").options;
+         taulukko.push("Haluaisitko portaalin?: " + y[x].text); 
+         
+         var w =  
+                document.getElementById("teksti").value;
+         taulukko.push("Haluaisit lisäksi: " + w);
+         
+          // yhdistetään taulukon solut tulostusta varten
+         alert(taulukko.join(" "));
+     }
+    </script>
+
+ </body></html>
+    
+	</body>
+</html>

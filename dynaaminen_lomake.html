@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Kysely</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="tyyli36.css" rel="stylesheet">
+        
+
+        
+        
+	</head>
+	<body>
+        
+        
+		<header>
+      <h1> Kehityskysely </h1>  
+            
+		</header>
+
+         <div align="center">
+    Kyselyn tarkoituksena on kartoittaa paranettavia epäkohtia Haaga-Helian nettisivuston käyttöliittymässä. 
+</div>
+        
+     
+        
+
+
+
+   
+        <div id="lomake">
+            
+            </div>
+        
+        <!-- 1. linkki jqueryn pääkirjastoon -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- 1. oma scripti -->
+
+<script>
+    $.getJSON("http://ohtukysely.herokuapp.com/api/kysymys/kyselyid/1", function(data){
+        var items =[]; //taulukko, johon kerätää lomake
+        
+
+        
+    // jos hakasulku
+        $.each(data, function(key, d){
+               items.push(d.teksti+"<br><input type=text><br>");
+    });
+    
+    // sivun lomakkeen tulostus
+    $("#lomake").append(items.join(" "));
+    });
+</script>
+
+</body>
+</html>
+
+
+
+        
+        
